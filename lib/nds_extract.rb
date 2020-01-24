@@ -44,7 +44,7 @@ def movies_with_director_key(name, movies_collection)
   movies_with_director_key_array
 end
 
-def find_gross_by_director_and_title (collection)
+def find_gross_by_director_and_title (director, title)
   a = 0 
   retrieved = []
   
@@ -73,7 +73,6 @@ def gross_per_studio(collection)
   studio_index = 0 
   studio_gross_hash = {}
 
-  pp "#{collection}"
  
   while studio_index < collection.length do
     gross = 0 
