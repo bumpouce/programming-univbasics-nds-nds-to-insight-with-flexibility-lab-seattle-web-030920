@@ -72,9 +72,12 @@ def gross_per_studio(collection)
   
   studio_index = 0 
   studio_gross_hash = {}
-  pp "Initial data: #{collection.count} items"
-  collection.uniq!   
-  pp "Unique data: #{collection.count} items"
+
+#  pp "Initial data: #{collection.count} items"
+#  collection.uniq!   
+#  pp "Unique data: #{collection.count} items"
+  
+  pp "Director database: #{directors_database}"
 
   while studio_index < collection.length do
     gross = 0 
