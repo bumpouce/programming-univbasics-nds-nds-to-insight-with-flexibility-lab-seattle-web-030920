@@ -91,11 +91,11 @@ def gross_per_studio(collection)
       gross = collection[studio_index][:worldwide_gross]
     end
 
-#    if !studio_gross_hash[studio_name]
-#      studio_gross_hash[studio_name] = gross
-#    else
+    if !studio_gross_hash[studio_name]
+      studio_gross_hash[studio_name] = gross
+    else
       studio_gross_hash[studio_name] += gross
-#    end
+    end
 
     studio_index += 1 
   end 
