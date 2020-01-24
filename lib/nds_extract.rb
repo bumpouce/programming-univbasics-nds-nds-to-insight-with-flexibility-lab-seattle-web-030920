@@ -82,14 +82,15 @@ def gross_per_studio(collection)
       director = collection[studio_index][:director_name]
       title = collection[studio_index][:title]
       
-      i = 0
-      unique_titles = []
-      while i < collection.length do
-        unique_titles << collection[i][:title]
-        unique_titles.uniq!
-        i += 1 
-      end
-      pp "From original #{collection.count} titles, found #{unique_titles.count} unique titles"
+#      i = 0
+#      unique_titles = []
+#      while i < collection.length do
+#        unique_titles << collection[i][:title]
+#        unique_titles.uniq!
+#        i += 1 
+#      end
+ #     pp "From original #{collection.count} titles, found #{unique_titles.count} unique titles"
+      collection.uniq!  
       
       studio_name = find_gross_by_director_and_title(director, title)[0]
       gross = find_gross_by_director_and_title(director, title)[1]
