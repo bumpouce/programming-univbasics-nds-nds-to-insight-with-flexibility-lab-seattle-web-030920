@@ -90,6 +90,7 @@ def gross_per_studio(collection)
     end
     d += 1
   end
+  pp "Found #{miramax_count} Miramax films"
 
   while studio_index < collection.length do
     gross = 0 
