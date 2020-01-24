@@ -44,18 +44,19 @@ def movies_with_director_key(name, movies_collection)
   movies_with_director_key_array
 end
 
-def find_gross_by_director_and_title (director, title)
+def find_gross_by_director_and_title (collection)
   a = 0 
   retrieved = []
   
   #"Looking for #{director} and #{title}."    
+  #step through directors_database 1x, for each entry, evaluate director + title from collection
   while a < directors_database.length do
-    if directors_database[a][:name] == director
+    if directors_database[a][:name] == collection[a][:name]
       b = 0  
       found = false
       
       while b < directors_database[a][:movies].length && !found do
-        if directors_database[a][:movies][b][:title] == title
+        if directors_database[a][:movies][b][:title] == collection[a][:movies][b][:title]
           retrieved << directors_database[a][:movies][b][:studio]
           retrieved << directors_database[a][:movies][b][:worldwide_gross]
           found = true
@@ -81,11 +82,11 @@ def gross_per_studio(collection)
     #if given director+title
     if !collection[studio_index][:studio] || !collection[studio_index][:worldwide_gross]
       
-      director = collection[studio_index][:director_name]
-      title = collection[studio_index][:title]
+#      director = collection[studio_index][:director_name]
+#      title = collection[studio_index][:title]
       
-      studio_name = find_gross_by_director_and_title(director, title)[0]
-      gross = find_gross_by_director_and_title(director, title)[1]
+#      studio_name = find_gross_by_director_and_title(director, title)[0]
+#      gross = find_gross_by_director_and_title(director, title)[1]
 
     #else given studio + gross
     else
