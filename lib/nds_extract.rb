@@ -77,10 +77,9 @@ def gross_per_studio(collection)
   miramax_count = 0
   while d < directors_database.length do
     m = 0
-    pp "Films from director #{directors_database[d][:name]}"
     while m < directors_database[d][:movies].count do
       if directors_database[d][:movies][m][:studio] == "Miramax"
-        pp "#{directors_database[d][:movies][m][:studio]} #{directors_database[d][:movies][m][:title]} #{directors_database[d][:movies][m][:worldwide_gross]} "
+        pp "Given: #{directors_database[d][:movies][m][:studio]} #{directors_database[d][:movies][m][:title]} #{directors_database[d][:movies][m][:worldwide_gross]} "
       end
       m += 1
     end
@@ -100,7 +99,7 @@ def gross_per_studio(collection)
       gross = find_gross_by_director_and_title(director, title)[1]
 
       if studio_name == "Miramax"
-        pp "#{studio_name} #{title} #{gross}"
+        pp "Found: #{studio_name} #{title} #{gross}"
       end
       
     #else given studio + gross
