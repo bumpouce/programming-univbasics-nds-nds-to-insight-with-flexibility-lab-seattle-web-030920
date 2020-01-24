@@ -86,27 +86,22 @@ def gross_per_studio(collection)
     #step through directors_database 1x, for each entry, evaluate director + title from collection
     a = 0
     while a < directors_database.length do
-      if directors_database[a][:name] == collection[index][:name]
-        b = 0  
-        found = false
-      
-        while b < directors_database[a][:movies].length && !found do
-          index = 0
-          while index < collection.length do
-            pp "Comparing #{directors_database[a][:movies][b][:title]} and #{collection[index][:title]}"
-            if directors_database[a][:movies][b][:title] == collection[index][:title]
-              studio = directors_database[a][:movies][b][:studio]
-              gross = directors_database[a][:movies][b][:worldwide_gross]
-              found = true
-            end
-            index += 1
-          end
-          b += 1
-        end
-        end
-      end          
+      b = 0  
+      while b < directors_database[a][:movies].length && !found do
+        index = 0
+        while index < collection.length do
+          pp "Comparing #{directors_database[a][:movies][b][:title]} and #{collection[index][:title]}"
+          if directors_database[a][:movies][b][:title] == collection[index][:title]
+            studio = directors_database[a][:movies][b][:studio]
+            gross = directors_database[a][:movies][b][:worldwide_gross]
+            found = true
+          end #if compare titles
+          index += 1
+        end #loop of collection
+        b += 1
+      end #loop of movies
       a += 1
-    end
+    end #loop of directors
 
 
     #assign found values, either from collection or by association from directors_database
