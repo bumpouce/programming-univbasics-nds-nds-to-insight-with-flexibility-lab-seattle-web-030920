@@ -72,6 +72,9 @@ def gross_per_studio(collection)
   
   studio_index = 0 
   studio_gross_hash = {}
+  pp "Initial data: #{collection.count} items"
+  collection.uniq!   
+  pp "Unique data: #{collection.count} items"
 
   while studio_index < collection.length do
     gross = 0 
@@ -81,16 +84,6 @@ def gross_per_studio(collection)
       
       director = collection[studio_index][:director_name]
       title = collection[studio_index][:title]
-      
-#      i = 0
-#      unique_titles = []
-#      while i < collection.length do
-#        unique_titles << collection[i][:title]
-#        unique_titles.uniq!
-#        i += 1 
-#      end
- #     pp "From original #{collection.count} titles, found #{unique_titles.count} unique titles"
-      pp "Should be no repeated hashes in the array? -> #{collection.uniq!}"   
       
       studio_name = find_gross_by_director_and_title(director, title)[0]
       gross = find_gross_by_director_and_title(director, title)[1]
