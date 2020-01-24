@@ -93,6 +93,7 @@ def gross_per_studio(collection)
         while b < directors_database[a][:movies].length && !found do
           index = 0
           while index < collection.length do
+            pp "Comparing #{directors_database[a][:movies][b][:title]} and #{collection[index][:title]}"
             if directors_database[a][:movies][b][:title] == collection[index][:title]
               studio = directors_database[a][:movies][b][:studio]
               gross = directors_database[a][:movies][b][:worldwide_gross]
