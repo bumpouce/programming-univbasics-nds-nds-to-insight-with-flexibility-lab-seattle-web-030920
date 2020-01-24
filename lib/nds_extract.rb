@@ -55,29 +55,29 @@ def gross_per_studio(collection)
     studio_name = collection[studio_index][:studio]
     gross = collection[studio_index][:worldwide_gross]
   
-#  #if collection array containts {director + title}
-#  else # !collection[studio_index][:studio] || !collection[studio_index][:worldwide_gross]
+  #if collection array containts {director + title}
+  else # !collection[studio_index][:studio] || !collection[studio_index][:worldwide_gross]
       
-#    #Looking for #{director} and #{title}.    
-#    #step through directors_database 1x, for each entry, evaluate director + title from collection
-#    a = 0
-#    while a < directors_database.length do
-#      b = 0  
-#      while b < directors_database[a][:movies].length && !found do
-#        index = 0
-#        while index < collection.length do
-#          pp "Comparing #{directors_database[a][:movies][b][:title]} and #{collection[index][:title]}"
-#          if directors_database[a][:movies][b][:title] == collection[index][:title]
-#            studio = directors_database[a][:movies][b][:studio]
-#            gross = directors_database[a][:movies][b][:worldwide_gross]
-#            found = true
-#          end #if compare titles
-#          index += 1
-#        end #loop of collection
-#        b += 1
-#      end #loop of movies
-#      a += 1
-#    end #loop of directors
+    #Looking for #{director} and #{title}.    
+    #step through directors_database 1x, for each entry, evaluate director + title from collection
+    a = 0
+    while a < directors_database.length do
+      b = 0  
+      while b < directors_database[a][:movies].length && !found do
+        index = 0
+        while index < collection.length do
+          pp "Comparing #{directors_database[a][:movies][b][:title]} and #{collection[index][:title]}"
+          if directors_database[a][:movies][b][:title] == collection[index][:title]
+            studio = directors_database[a][:movies][b][:studio]
+            gross = directors_database[a][:movies][b][:worldwide_gross]
+            found = true
+          end #if compare titles
+          index += 1
+        end #loop of collection
+        b += 1
+      end #loop of movies
+      a += 1
+    end #loop of directors
   end #if directors or studios
 
     #assign found values, either from collection or by association from directors_database
