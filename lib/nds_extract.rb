@@ -90,7 +90,7 @@ def gross_per_studio(collection)
 #        i += 1 
 #      end
  #     pp "From original #{collection.count} titles, found #{unique_titles.count} unique titles"
-      collection.uniq!  
+      pp "Should be no repeated hashes in the array? -> #{collection.uniq!}"   
       
       studio_name = find_gross_by_director_and_title(director, title)[0]
       gross = find_gross_by_director_and_title(director, title)[1]
