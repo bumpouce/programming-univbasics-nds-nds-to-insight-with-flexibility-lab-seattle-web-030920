@@ -73,10 +73,6 @@ def gross_per_studio(collection)
   studio_index = 0 
   studio_gross_hash = {}
 
-#  pp "Initial data: #{collection.count} items"
-#  collection.uniq!   
-#  pp "Unique data: #{collection.count} items"
-  
   d = 0 
   miramax_count = 0
   while d < directors_database.length do
