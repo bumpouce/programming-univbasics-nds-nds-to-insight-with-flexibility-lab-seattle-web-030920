@@ -80,7 +80,7 @@ def gross_per_studio(collection)
     pp "Films from director #{directors_database[d][:name]}"
     while m < directors_database[d][:movies].count do
       if directors_database[d][:movies][m][:studio] == "Miramax"
-        pp "#{directors_database[d][:movies][m]} "
+        pp "#{directors_database[d][:movies][m][:worldwide_gross]} "
         miramax_count += 1
       end
       m += 1
