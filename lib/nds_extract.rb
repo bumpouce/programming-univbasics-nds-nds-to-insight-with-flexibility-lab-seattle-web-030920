@@ -44,19 +44,19 @@ def movies_with_director_key(name, movies_collection)
   movies_with_director_key_array
 end
 
-def find_gross_by_director_and_title (collection)
+def find_gross_by_director_and_title (collection, index)
   a = 0 
   retrieved = []
   
-  #"Looking for #{director} and #{title}."    
+  #Looking for #{director} and #{title}.    
   #step through directors_database 1x, for each entry, evaluate director + title from collection
   while a < directors_database.length do
-    if directors_database[a][:name] == collection[a][:name]
+    if directors_database[a][:name] == collection[index][:name]
       b = 0  
       found = false
       
       while b < directors_database[a][:movies].length && !found do
-        if directors_database[a][:movies][b][:title] == collection[a][:movies][b][:title]
+        if directors_database[a][:movies][b][:title] == collection[index][:title]
           retrieved << directors_database[a][:movies][b][:studio]
           retrieved << directors_database[a][:movies][b][:worldwide_gross]
           found = true
@@ -74,35 +74,47 @@ def gross_per_studio(collection)
   studio_index = 0 
   studio_gross_hash = {}
 
-  pp "#{collection}"
- 
-  while studio_index < collection.length do
-    gross = 0 
-    
-    #if given director+title
-    if !collection[studio_index][:studio] || !collection[studio_index][:worldwide_gross]
+  #if collection array contains {studio + worldwide_gross}
+  if collection[0][:studio] && collection[0][:worldwide_gross]
+    studio_name = collection[studio_index][:studio]
+    gross = collection[studio_index][:worldwide_gross]
+  
+  #if collection array containts {director + title}
+  else # !collection[studio_index][:studio] || !collection[studio_index][:worldwide_gross]
       
-#      director = collection[studio_index][:director_name]
-#      title = collection[studio_index][:title]
+    #Looking for #{director} and #{title}.    
+    #step through directors_database 1x, for each entry, evaluate director + title from collection
+    a = 0
+    while a < directors_database.length do
+      if directors_database[a][:name] == collection[index][:name]
+        b = 0  
+        found = false
       
-#      studio_name = find_gross_by_director_and_title(director, title)[0]
-#      gross = find_gross_by_director_and_title(director, title)[1]
-
-    #else given studio + gross
-    else
-      studio_name = collection[studio_index][:studio]
-      gross = collection[studio_index][:worldwide_gross]
+        while b < directors_database[a][:movies].length && !found do
+          index = 0
+          while index < collection.length do
+            if directors_database[a][:movies][b][:title] == collection[index][:title]
+              studio = directors_database[a][:movies][b][:studio]
+              gross = directors_database[a][:movies][b][:worldwide_gross]
+              found = true
+            end
+            index += 1
+          end
+          b += 1
+        end
+        end
+      end          
+      a += 1
     end
 
+
+    #assign found values, either from collection or by association from directors_database
     if !studio_gross_hash[studio_name]
       studio_gross_hash[studio_name] = gross
     else
       studio_gross_hash[studio_name] += gross
     end
 
-    studio_index += 1 
-  end 
-  
   studio_gross_hash
 end
 
