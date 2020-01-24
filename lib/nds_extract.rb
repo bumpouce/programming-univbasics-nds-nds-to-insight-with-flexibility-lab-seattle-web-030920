@@ -76,7 +76,7 @@ def gross_per_studio(collection)
   while studio_index < collection.length do
     gross = 0 
     
-    #if given director+title
+    #if given director + title
     if !collection[studio_index][:studio] || !collection[studio_index][:worldwide_gross]
       
       director = collection[studio_index][:director_name]
