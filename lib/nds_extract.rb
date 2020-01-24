@@ -77,7 +77,18 @@ def gross_per_studio(collection)
 #  collection.uniq!   
 #  pp "Unique data: #{collection.count} items"
   
-  pp "Director database: #{directors_database}"
+  d = 0 
+  while d < directors_database.length do
+    m = 0
+    while m < directors_database[d][:movies][m].count do
+      if directors_database[d][:movies][m][:studio] == "Miramax"
+        pp "#{directors_database[d][:movies][m]} "
+      end
+      m += 1
+    end
+    #for each director in db, find Miramax movies, count how many and retrieve gross
+    d += 1
+  end
 
   while studio_index < collection.length do
     gross = 0 
