@@ -74,6 +74,7 @@ def gross_per_studio(collection)
   studio_index = 0 
   studio_gross_hash = {}
 
+  pp "Director database: #{directors_database}"
  
   while studio_index < collection.length do
     gross = 0 
