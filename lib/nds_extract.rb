@@ -48,7 +48,7 @@ def find_gross_by_director_and_title (director, title)
   a = 0 
   retrieved = []
   
-  #"Looking for #{director} and #{title}."    
+  #Looking for #{director} and #{title} in directors_database    
   while a < directors_database.length do
     if directors_database[a][:name] == director
       b = 0  
