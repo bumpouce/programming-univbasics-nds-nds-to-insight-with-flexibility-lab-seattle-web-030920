@@ -55,12 +55,13 @@ def find_gross_by_director_and_title (director, title)
       found = false
       
       while b < directors_database[a][:movies].length && !found do
-        if directors_database[a][:movies][b][:title] == title 
-          pp "Film info: #{directors_database[a][:movies][b]}" 
-          retrieved << directors_database[a][:movies][b][:studio]
-          retrieved << directors_database[a][:movies][b][:worldwide_gross]
-          directors_database[a][:movies][b][:counted] = true
-          found = true
+        if !directors_database[a][:movies][b][:counted]
+          if directors_database[a][:movies][b][:title] == title 
+            retrieved << directors_database[a][:movies][b][:studio]
+            retrieved << directors_database[a][:movies][b][:worldwide_gross]
+            directors_database[a][:movies][b][:counted] = true
+            found = true
+          end
         end
         b += 1
       end
